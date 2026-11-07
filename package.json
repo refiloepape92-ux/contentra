@@ -1,0 +1,24 @@
+{
+  "name": "CONTENTRA",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB \"npm run dev --workspace=@creatorhub/backend\" \"npm run dev --workspace=@creatorhub/frontend\"",
+    "dev:backend": "npm run dev --workspace=@creatorhub/backend",
+    "dev:frontend": "npm run dev --workspace=@creatorhub/frontend",
+    "build": "npm run build --workspace=@creatorhub/frontend",
+    "check": "npm run check --workspace=@creatorhub/backend && npm run build --workspace=@creatorhub/frontend",
+    "seed:creator": "npm run seed:creator --workspace=@creatorhub/backend",
+    "start": "concurrently -k -n API,WEB \"npm run dev --workspace=@creatorhub/backend\" \"npm run dev --workspace=@creatorhub/frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
